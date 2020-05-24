@@ -21,7 +21,7 @@ Installation
 Deploy
 ---
 
-Deployed code in heroku (https://guarded-dawn-35517.herokuapp.com/). 
+Deployed code in heroku (https://floating-shore-66614.herokuapp.com//). 
 Tutorial how to deploy in this FAQ website: https://devcenter.heroku.com/articles/deploying-nodejs
 
 
