@@ -34,13 +34,13 @@ Structure
 
 ### Libraries included: 
 
-    * Node version: 12.x
-    * NPM version: 6.x.x 
-    * Working with local env variables: dotenv
-    * Middleware for handling multipart/form-data (CSV in this case): multer
-    * CSV to JSON convertion: csvtojson
-    * Template for page to upload files: ejs (It will be updated to another framework when front end is ready)
-    * Firebase massive users management: firebase-admin
+* Node version: 12.x
+* NPM version: 6.x.x 
+* Working with local env variables: dotenv
+* Middleware for handling multipart/form-data (CSV in this case): multer
+* CSV to JSON convertion: csvtojson
+* Template for page to upload files: ejs (It will be updated to another framework when front end is ready)
+* Firebase massive users management: firebase-admin
 
 Environment variables
 ---

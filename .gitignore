@@ -8,7 +8,10 @@
 
 ### Firebase Patch ###
 .runtimeconfig.json
-.firebase/
+.fireb
+
+### CSV ###
+.csv
 
 ### Node ###
 # Logs
