@@ -81,14 +81,11 @@ app.post("/uploadCSV",function (req, res, next) {
                 res.json(json)
                 //create users
                 multicreation.userCreation(json)
-                //delete file -check if asyncronically is right
-                fs.unlinkSync(`./temp/${csvfilename}`)
-            })
-            .catch((error)=>{
-                res.send(error)
             })
         } 
     }) 
+    //delete file -check if asyncronically is right
+    fs.unlinkSync(`./temp/${csvfilename}`)
 }) 
     
 // Take any port number of your choice which 
