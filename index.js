@@ -84,6 +84,9 @@ app.post("/uploadCSV",function (req, res, next) {
                 //delete file -check if asyncronically is right
                 fs.unlinkSync(`./temp/${csvfilename}`)
             })
+            .catch((error)=>{
+                res.send(error)
+            })
         } 
     }) 
 }) 
