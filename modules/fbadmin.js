@@ -17,32 +17,47 @@ class multiUserCreation{
             "auth_provider_x509_cert_url": process.env.AUTH_PROVIDER_CERT,
             "client_x509_cert_url": process.env.CLIENT_CERT
           }),
-          databaseURL: "https://postic-authentication.firebaseio.com/",
+          databaseURL: `https://${process.env.PROJECT_I}.firebaseio.com/`,
         });
     }
     
-    // i = 1;
-    for (let i in jsonUsers){
-    admin
-      .auth()
-      .createUser({
-        email: jsonUsers[i]["Email"],
-        emailVerified: false,
-        phoneNumber: `+57${jsonUsers[i]["Phone"]}`,
-        password: "secretPassword",
-        displayName: `${jsonUsers[i]["First Name"]} ${jsonUsers[i]["Last Name"]}`,
-        disabled: false,
-      })
-      .then(function (userRecord) {
-        // See the UserRecord reference doc for the contents of userRecord.
-        console.log("Successfully created new user:", userRecord.uid);
-        // return {"User email":jsonUsers[i]["Email"], "Result":"Succesfully created"}
-      })
-      .catch(function (error) {
-        console.log("Error creating new user:", error);
-    //    return {"User email":jsonUsers[i]["Email"], "Result":error}
-      });
+    async function insertUsers (jsonUsers){
+      let messages = []
+      for (let i=0; i < jsonUsers.length;i++){
+        const message = await admin
+          .auth()
+          .createUser({
+            email: jsonUsers[i]["Email"],
+            emailVerified: false,
+            phoneNumber: `+57${jsonUsers[i]["Phone"]}`,
+            password: "secretPassword",
+            displayName: `${jsonUsers[i]["First Name"]} ${jsonUsers[i]["Last Name"]}`,
+            disabled: false,
+          })
+          .then(function (userRecord) {
+            // See the UserRecord reference doc for the contents of userRecord.
+            // console.log("Successfully created new user:", userRecord.displayName);
+            return ({"User email":jsonUsers[i]["Email"], "Result":"Succesfully created"})
+          })
+          .catch(function (error) {
+            // console.log("Error creating new user:", error);
+          return ({"User email":jsonUsers[i]["Email"], "Result":error.code})
+          })
+          messages.push(message)
+        }
+        return messages
     }
+
+    // (async () => {
+    //   const messaFinal = await insertUsers (jsonUsers)
+    //   console.log(messaFinal)
+    //   return messaFinal
+    // })()
+    const messageFinal = insertUsers (jsonUsers)
+    messageFinal.then(function(result){
+      // console.log(result)
+      return messageFinal
+    })
   }
 }
 

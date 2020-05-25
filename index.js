@@ -78,9 +78,9 @@ app.post("/uploadCSV",function (req, res, next) {
             const converter=csv()
             .fromFile(`./temp/${csvfilename}`)
             .then((json)=>{
-                res.json(json)
+                // res.json(json)
                 //create users
-                multicreation.userCreation(json)
+                res.send(multicreation.userCreation(json))
                 //delete file -check if asyncronically is right
                 fs.unlinkSync(`./temp/${csvfilename}`)
             })
