@@ -10,6 +10,9 @@ require('dotenv').config()
 //Access environment variables
 const port= process.env.PORT ? process.env.PORT : 8000
 
+//Redirect Express to the public folder for stylesheets
+app.use(express.static("public")) 
+
 const multicreation = new multiUserCreation()
     
 // View Engine Setup 
@@ -94,5 +97,3 @@ app.listen(port,function(error) {
     if(error) throw error 
         console.log(`Server created Successfully on ${port}`) 
 }) 
-
-

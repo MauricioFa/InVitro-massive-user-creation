@@ -33,6 +33,7 @@ class multiUserCreation {
             emailVerified: false,
             password: "ENtrANYmaTen",
             disabled: false,
+            displayName: `${jsonUsers[i]["name"]} ${jsonUsers[i]["lastName"]}`
           })
           .then(function (userRecord) {
             // See the UserRecord reference doc for the contents of userRecord.

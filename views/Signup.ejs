@@ -1,21 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>In Vitro: file upload</title>
+    <link rel="stylesheet" type="text/css" href="signup.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<!DOCTYPE html> 
-<html> 
-  
-<head> 
-    <title>CSV FILE UPLOAD DEMO</title> 
-</head> 
-  
-<body> 
-    <h1>Single CSV file Upload Demo</h1> 
-   
-    <form action="/uploadCSV" 
-      enctype="multipart/form-data" method="POST"> 
-      
-        <span>Upload csv file with users data:</span>   
-        <input type="file" name="usersdata" required/> <br> 
-        <input type="submit" value="submit">  
-    </form> 
-</body> 
-  
-</html> 
+  <body>
+    <div class="header">
+      <img src="http://resource.intidev.info/InVitro/logo.png" alt="" />
+    </div>
+    <div class="main">
+      <div class="container">
+        <h1 class="title">Massive users creation</h1>
+        <form action="/uploadCSV" enctype="multipart/form-data" method="POST">
+          <span>Upload csv file with your users data:</span>
+          <div class="uploadinput">
+            <label class="file">
+              <input type="file" name="usersdata" required id="file"/>Select file
+            </label>
+          </div>
+          <input type="submit" value="Attach" class="submit submit-disabled" disabled />
+        </form>
+      </div>
+    </div>
+    <script>
+      const input = document.querySelector('input[name="usersdata"]');
+      input.addEventListener("input", (evt) => {
+        const file = document.getElementById("file")
+        const submit = document.getElementsByClassName("submit")[0]
+        if (file.files.length !==0){
+            submit.disabled = false
+            submit.classList.remove('submit-disabled')
+        } else {
+            submit.classList.add('submit-disabled')
+        }
+      });
+    </script>
+  </body>
+</html>
